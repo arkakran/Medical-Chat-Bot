@@ -1,3 +1,12 @@
+try:
+    import faiss
+except ImportError:
+    import os
+    os.system("pip install faiss-cpu==1.7.4.post2")
+    import faiss
+
+
+
 from flask import Flask, render_template, request, jsonify
 import os
 from datetime import datetime
@@ -157,4 +166,5 @@ def reprocess_pdf():
 if __name__ == '__main__':
     initialize_medical_chatbot()
     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
