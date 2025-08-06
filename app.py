@@ -19,7 +19,8 @@ app = Flask(__name__)
 groq_client = Groq(api_key=os.getenv('GROQ_API_KEY'))
 
 # PDF path
-PDF_PATH = r"D:\Medical Chatbot\Medical_book.pdf"
+PDF_PATH = "data/Medical_book.pdf"
+
 VECTOR_DB_PATH = "data/medical_vector_store"
 
 def initialize_medical_chatbot():
@@ -156,3 +157,4 @@ def reprocess_pdf():
 if __name__ == '__main__':
     initialize_medical_chatbot()
     app.run(debug=True, host='0.0.0.0', port=5000)
+
