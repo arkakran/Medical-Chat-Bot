@@ -217,22 +217,22 @@ function removeTypingIndicator() {
     }
 }
 
-// function checkHealth() {
-//     fetch('/health')
-//     .then(response => response.json())
-//     .then(data => {
-//         const status = data.status === 'healthy' ? 'System Healthy' : 'System Error';
-//         const chunks = data.vector_database?.total_chunks || 0;
+function checkHealth() {
+    fetch('/health')
+    .then(response => response.json())
+    .then(data => {
+        const status = data.status === 'healthy' ? 'System Healthy' : 'System Error';
+        const chunks = data.vector_database?.total_chunks || 0;
         
-//         showNotification(
-//             `${status} - Knowledge Base: ${chunks} medical chunks loaded`,
-//             data.status === 'healthy' ? 'success' : 'error'
-//         );
-//     })
-//     .catch(error => {
-//         showNotification('Failed to check system health', 'error');
-//     });
-// }
+        showNotification(
+            `${status} - Knowledge Base: ${chunks} medical chunks loaded`,
+            data.status === 'healthy' ? 'success' : 'error'
+        );
+    })
+    .catch(error => {
+        showNotification('Failed to check system health', 'error');
+    });
+}
 
 function reprocessPDF() {
     if (confirm('This will reprocess the medical PDF and recreate the knowledge base. Continue?')) {
@@ -366,4 +366,5 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
 
